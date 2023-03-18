@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  echo-backend:
+    build:
+      context: ./backend
+    image: echo-backend
+    container_name: echo-backend
+    restart: always
+    ports:
+      - "1111:8000"
+    networks:
+     - echo-network
+
+  echo-frontend:
+    build:
+      context: ./frontend
+    image: echo-frontend
+    container_name: echo-frontend
+    restart: always
+    ports:
+      - "2222:8000"
+    networks:
+     - echo-network
+
+networks:
+  echo-network:

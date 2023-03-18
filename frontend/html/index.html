@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dynamically Add Rows to Table</title>
+    <script>
+      function addRow() {
+        // Get the table and input values
+        var table = document.getElementById("myTable");
+        var id = document.getElementById("id").value;
+        var items = document.getElementById("items").value.split(",");
+
+        // Create a new row and cells
+        var newRow = table.insertRow(-1);
+        var idCell = newRow.insertCell(0);
+        var itemsCell = newRow.insertCell(1);
+
+        // Set the cell values
+        idCell.innerHTML = id;
+        itemsCell.innerHTML = "[" + items.join(", ") + "]";
+
+        // Clear the input values
+        document.getElementById("id").value = "";
+        document.getElementById("items").value = "";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Add Rows to Table</h1>
+
+    <table id="myTable">
+      <tr>
+        <th>ID</th>
+        <th>Items</th>
+      </tr>
+    </table>
+
+    <br>
+
+    <label for="id">ID:</label>
+    <input type="text" id="id">
+
+    <label for="items">Items:</label>
+    <input type="text" id="items">
+
+    <button onclick="addRow()">Add Row</button>
+    <button onclick="submit()">Submit</button>
+    <script src="html/resources/js/index.js"></script>
+  </body>
+</html>
