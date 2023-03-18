@@ -15,7 +15,6 @@ function convertToJson() {
 
     // Convert the data to JSON and display it in an alert dialog
     var json = JSON.stringify({"items": data});
-    alert(json);
     return json
 }
 
@@ -25,7 +24,7 @@ function submit() {
 
     socket.addEventListener('open', (event) => {
         // Create an example JSON object and integer value
-        const intValue = 0;
+        const intValue = parseInt(document.getElementById("nod").value);
 
         // Stringify the JSON data and integer value
         const jsonData = JSON.stringify(json_items);
@@ -47,11 +46,9 @@ function submit() {
 
 
     socket.onmessage = function (event) {
-        if (event.data === "Processing completed.") {
-            alert("!")
-        } else {
+        if (event.data !== "Processing completed.") {
             console.log(event.data);
-            alert(event.data)
+            document.getElementById("messages").innerHTML += event.data + '</br>';
         }
     }
 

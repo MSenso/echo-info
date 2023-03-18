@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Dynamically Add Rows to Table</title>
-    <script>
-      function addRow() {
-        // Get the table and input values
-        var table = document.getElementById("myTable");
-        var id = document.getElementById("id").value;
-        var items = document.getElementById("items").value.split(",");
 
-        // Create a new row and cells
-        var newRow = table.insertRow(-1);
-        var idCell = newRow.insertCell(0);
-        var itemsCell = newRow.insertCell(1);
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamically Add Rows to Table</title>
+  <script src="html/resources/js/add-rows.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
 
-        // Set the cell values
-        idCell.innerHTML = id;
-        itemsCell.innerHTML = "[" + items.join(", ") + "]";
+<body>
+  <figure class="text-center">
+    <h1>Добавьте вычислительные узлы и связи между ними</h1>
+  </figure>
 
-        // Clear the input values
-        document.getElementById("id").value = "";
-        document.getElementById("items").value = "";
-      }
-    </script>
-  </head>
-  <body>
-    <h1>Add Rows to Table</h1>
-
-    <table id="myTable">
+  <table id="myTable" class="table table-bordered">
+    <thead>
       <tr>
-        <th>ID</th>
-        <th>Items</th>
+        <th scope="col" style="width: 42.3%">Номер узла</th>
+        <th scope="col" >Номера связанных узлов</th>
       </tr>
-    </table>
+    </thead>
+    <tbody class="table-group-divider">
+  </table>
 
-    <br>
 
-    <label for="id">ID:</label>
-    <input type="text" id="id">
+  <br>
 
-    <label for="items">Items:</label>
-    <input type="text" id="items">
+  <div class="input-group mb-3">
+    <span class="input-group-text">Номер узла:</span>
+    <input class="form-control" type="text" id="id">
+    <span class="input-group-text">Номер связанного узла:</span>
+    <input class="form-control" type="text" id="items">
+    <button class="btn btn-outline-dark" onclick="addRow()">Добавить строку</button>
+  </div>
 
-    <button onclick="addRow()">Add Row</button>
-    <button onclick="submit()">Submit</button>
-    <script src="html/resources/js/index.js"></script>
-  </body>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Номер узла-инициализатора:</span>
+    <input class="form-control" type="text" id="nod">
+  </div>
+
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-outline-dark" onclick="submit()">Получить данные о нагрузке</button>
+  </div>
+
+  <p id="messages"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="html/resources/js/index.js"></script>
+</body>
+
 </html>
