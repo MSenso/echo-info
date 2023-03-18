@@ -40,7 +40,7 @@ class Node:
         self.N += 1
         if self.N == len(list(filter(lambda x: x.id != sender.id, self.neighbors))):
             if not self.Initiator:
-                self.Pred.receive_echo_message(self)
+                await self.Pred.receive_echo_message(self, websocket)
             else:
                 await websocket.send_text(f"Эхо для узла № {self.id}")
                 await asyncio.sleep(1)
