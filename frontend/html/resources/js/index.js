@@ -24,7 +24,7 @@ function submit() {
 
     socket.addEventListener('open', (event) => {
         // Create an example JSON object and integer value
-        const intValue = 0;
+        const intValue = document.getElementById("nod");
 
         // Stringify the JSON data and integer value
         const jsonData = JSON.stringify(json_items);
